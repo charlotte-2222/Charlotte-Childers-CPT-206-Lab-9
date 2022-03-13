@@ -41,7 +41,7 @@ Partial Class frmMain
         Me.LstGrade.Items.AddRange(New Object() {"A", "B", "C", "D", "F"})
         Me.LstGrade.Location = New System.Drawing.Point(34, 62)
         Me.LstGrade.Name = "LstGrade"
-        Me.LstGrade.Size = New System.Drawing.Size(33, 69)
+        Me.LstGrade.Size = New System.Drawing.Size(21, 69)
         Me.LstGrade.TabIndex = 0
         '
         'LstStudents
