@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Charlotte-Childers-CPT-206-Lab-9")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("Potter Jr High Assignment from Programming With Microsoft Visual Basic 8th Edition")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("Charlotte-Childers-CPT-206-Lab-9")>
 <Assembly: AssemblyCopyright("Copyright ©  2022")>
