@@ -74,8 +74,23 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub BtnDisplay_Click(sender As Object, e As EventArgs) Handles BtnDisplay.Click
+        LstStudents.Items.Clear()
+        Dim Student As Integer = 0
+        For Y As Integer = 0 To intStudentIndex - 1
+            If FileInfo(Y, 1) = LstGrade.SelectedItem.ToString Then
+                LstStudents.Items.Add(FileInfo(Y, 0))
+                Student += 1
+            End If
+        Next
+        TxtNum.Text = Student.ToString
+        HideTheCaret(TxtNum.Handle)
+    End Sub
 
-
+    Private Sub LstGrade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LstGrade.SelectedIndexChanged
+        TxtNum.Clear()
+        LstStudents.Items.Clear()
+    End Sub
 
 
 End Class
