@@ -12,7 +12,7 @@ Public Class frmMain
     ' ^Hides I-Beam caret on disabled caret.
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
-        'These Form Closing events both work the same way, regardless if it is the 'BtnExit' button or the 'X' on the form. 
+        'These Form Closing events both work the same way, regardless if it is the 'BtnExit' button or the [X] on the form. 
         'This is an *intended function.*
     End Sub
 
