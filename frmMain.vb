@@ -8,7 +8,7 @@ Option Strict On
 Option Explicit On
 Option Infer Off
 Public Class frmMain
-    Private Declare Function HideTheCaret Lib "user32.dll" (ByVal hWnd As IntPtr) As Boolean
+    Private Declare Function HideCaret Lib "user32.dll" (ByVal hWnd As IntPtr) As Boolean
     ' ^Hides I-Beam caret on disabled caret.
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
@@ -45,19 +45,20 @@ Public Class frmMain
         Dim LoadFile As IO.StreamReader 'Stream reader to open coded file
         Dim FailFile As OpenFileDialog = New OpenFileDialog 'catch/backup for failure in stream reader, will allow user to open from Dir
 
-        If IO.File.Exists("NamesAndGrades.txt") Then
+        If IO.File.Exists("NamesAndGraddes.txt") Then
             'If it exists in the debug file / is readable, it will open
-            LoadFile = IO.File.OpenText("NamesAndGrades.txt")
+            LoadFile = IO.File.OpenText("NamesAndGraddes.txt")
             Do Until LoadFile.Peek = -1
                 FileInfo(intStudentIndex, 0) = LoadFile.ReadLine
                 FileInfo(intStudentIndex, 1) = LoadFile.ReadLine
                 intStudentIndex += 1
+
             Loop
+            LoadFile.Close()
         Else
             'If the specified file, in our case "NamesAndGrades.txt", is not present/readable -
             'the user will be tasked with looking for it themselves
-            MessageBox.Show("Unable to open the intended file - " + "
-                    it was either missing from the directory or is not readable. Please select a file from the Directory.",
+            MessageBox.Show("Unable to open the intended file - it was either missing from the directory or is not readable. Please select a file from the directory.",
             "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error)
             If FailFile.ShowDialog() = DialogResult.OK Then
                 LoadFile = IO.File.OpenText(FailFile.FileName)
@@ -65,11 +66,18 @@ Public Class frmMain
                     FileInfo(intStudentIndex, 0) = LoadFile.ReadLine
                     FileInfo(intStudentIndex, 1) = LoadFile.ReadLine
                     intStudentIndex += 1
+
                 Loop
-            ElseIf FailFile.ShowDialog() = DialogResult.Cancel Then
-                Me.Close() 'Ok/Cancel options to close the application 
-                'Else
-                '    Me.Close()
+                LoadFile.Close()
+                If FailFile.ShowDialog() = DialogResult.Cancel Then
+                    'Ok/Cancel options to close the application
+                    ' !! Does not work as intended - has unintentional effects. Will revisit. !!
+
+
+
+                Else
+                    Me.Close()
+                End If
             End If
         End If
     End Sub
@@ -84,7 +92,7 @@ Public Class frmMain
             End If
         Next
         TxtNum.Text = Student.ToString
-        HideTheCaret(TxtNum.Handle)
+        HideCaret(TxtNum.Handle)
     End Sub
 
     Private Sub LstGrade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LstGrade.SelectedIndexChanged
