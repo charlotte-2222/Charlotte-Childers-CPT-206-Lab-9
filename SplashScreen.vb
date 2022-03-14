@@ -1,4 +1,13 @@
-﻿Public Class SplashScreen
+﻿' Charlotte Childers
+' CPT-206-Lab-9
+' 3/13/2022
+
+
+Option Strict On
+Option Explicit On
+Option Infer Off
+
+Public Class SplashScreen
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         prog.Increment(1)
         If prog.Value = 100 Then
