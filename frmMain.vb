@@ -9,10 +9,6 @@ Option Explicit On
 Option Infer Off
 Public Class frmMain
 
-
-
-    Private Declare Function HideCaret Lib "user32.dll" (ByVal hWnd As IntPtr) As Boolean
-    ' ^Hides I-Beam caret on disabled caret.
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
         'These Form Closing events both work the same way, regardless if it is the 'BtnExit' button or the [X] on the form. 
@@ -36,7 +32,6 @@ Public Class frmMain
         DECOY.Text = DateTime.Now.ToString("F")
         'Time/Date
     End Sub
-
 
 
     '-Begin Main Operations-'
@@ -109,7 +104,7 @@ Public Class frmMain
         'The result label begins Visible=False as it is by default 0. Upon selection, it will change and become visible.
         lblForResultStudents.Visible = True
         lblForResultStudents.Text = Student.ToString
-        ' HideCaret(TxtNum.Handle)
+
     End Sub
 
     Private Sub LstGrade_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LstGrade.SelectedIndexChanged
